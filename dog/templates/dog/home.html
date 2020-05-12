@@ -1,0 +1,23 @@
+{% extends 'dog/index.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+
+    <h1 class="separator">Kennel FLUFFY WONDER</h1>
+    <div class="content-block">
+        {{ content.home_text|safe }}
+    </div>
+
+    <h1 class="separator">News</h1>
+    <div class="content-block">
+        {{news_last_article.news_text|safe}}
+
+        {% if news_count > 1 %}
+        <a class="more-link" href="{% url 'dog.news' %}">More ({{ news_count }}) &raquo;</a>
+        {% endif %}
+    </div>
+
+
+{% endblock %}
+
+

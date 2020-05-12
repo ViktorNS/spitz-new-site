@@ -1,0 +1,11 @@
+{% extends 'dog/index.html' %}
+
+{% block content %}
+    {% for item in news %}
+        {{ item.date_created|date:"SHORT_DATE_FORMAT" }}
+        {{ item.news_text|safe }}
+        <div style="clear: both;"></div>
+        <hr />
+    {% endfor %}
+{% endblock %}
+

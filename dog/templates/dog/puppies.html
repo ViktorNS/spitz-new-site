@@ -1,0 +1,81 @@
+{% extends 'dog/index.html' %}
+{% load thumbnail %}
+
+{% block content %}
+    {% for group in puppy_groups %}
+        <table width="100%" border="0" cellpadding="4">
+            <tr>
+                <td>Ema/Dam: </td>
+                <td>Isa/Sire: </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="{% url 'dog.our_dogs' name=group.mom.home_name %}">
+                        <span class="group-name full">{{ group.mom.full_name }}</span></a>
+                </td>
+                <td>
+                    <a href="{% url 'dog.our_dogs' name=group.dad.home_name %}">
+                        <span class="group-name full">{{ group.dad.full_name }}</span></a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {% thumbnail group.mom.foto 300x200 upscale as thumb %}
+                    <img src="{{ thumb.url }}"></a>
+                </td>
+                <td>
+                    {% thumbnail group.dad.foto 300x200 upscale as thumb %}
+                    <img src="{{ thumb.url }}"></a>
+                </td>
+        </table>
+
+        <div style="clear: both;"></div>
+        <hr />
+
+        <div>Date of Birth: {{ group.date_of_birth|date:"SHORT_DATE_FORMAT" }}</div><br>
+
+            {% for puppy in group.puppies.all %}
+                <div class="puppy-name">{{ puppy.name }}</div>
+                <div class="puppy-sex">{{ puppy.p_sex }}</div>
+                <div class="puppy-status"> {{ puppy.status }}</div>
+
+                    <div class="puppy-picture">
+                        {% for photo in puppy.puppy_pictures.all %}
+                            {% thumbnail photo.picture 780x520 upscale as thumb_big %}
+                                {% thumbnail photo.picture 300x200 upscale as thumb %}
+                                    <a href="{{ thumb_big.url }}" target="_blank"><img src="{{ thumb.url }}"></a>
+                        {% endfor %}
+                    </div>
+
+            {% endfor %}
+
+
+     <div style="clear: both;"></div>
+        <hr />
+
+    <div class="kontact_info">INFO:<p> tel: +372 5333 1777 <br>
+        <b>e-mail:</b> <a href="mailto:{{ contact.e_mail }} ?subject=Spitz.ee">
+          {{ contact.e_mail }}</a></p></div>
+    <div style="clear: both;"></div>
+        <hr />
+
+    {% empty %}
+
+        <div class="nopupies">
+            I am sorry,<br>there is currently no puppies for sale.
+        </div>
+        <br>
+
+        <div class="nopupies-contact">
+            You can leave your contacts,<br>we will notify you as soon as new puppies born.
+        </div>
+        <br>
+        <div class="kontact_info">
+            <b>e-mail:</b>
+            <a href="mailto:{{ contact.e_mail }} ?subject=Spitz.ee"> {{ contact.e_mail }}</a>
+        </div>
+    {% endfor %}
+
+{% endblock %}
+
+

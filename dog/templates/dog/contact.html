@@ -1,0 +1,27 @@
+{% extends 'dog/index.html' %}
+
+{% block content %}
+
+    <div class="kontact">{{ contact.kennel }}</div>
+    <br>
+    <div class="kontact_owner">{{ contact.owner1 }}</div>
+    <div class="kontact_owner">{{ contact.owner2 }}</div>
+    <br>
+    <div class="kontact_info">{{ contact.adress }}</div>
+    <div class="kontact_info">{{ contact.country }}</div>
+    <br>
+    <div class="kontact_info">GSM: {{ contact.phone }}</div>
+
+    <br>
+    <div class="kontact_info"><b>e-mail:</b> <a href="mailto:{{ contact.e_mail }} ?subject=Spitz.ee">
+          {{ contact.e_mail }}</a></div>
+    <br>
+
+{% endblock content %}
+
+
+
+
+
+
+

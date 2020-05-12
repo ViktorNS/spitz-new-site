@@ -1,0 +1,214 @@
+body {
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-image: url(./background.jpg);
+}
+
+.main {
+    width: 910px;
+    margin: 0 auto;
+}
+
+.logo {
+    height: 190px;
+    width: 922px;
+    margin: 0 auto;
+}
+
+.logo span {
+    float: right;
+	margin: 20px 10px 30px;
+	color: #FFF;
+}
+
+.left-sidebar a:hover {
+    color: inherit;
+}
+.left-sidebar a {
+    color:  white;
+}
+.left-sidebar {
+    float: left;
+    width: 194px;
+    padding-left: 20px;
+}
+
+.left_banner {
+    -o-fit-object: cover;
+    width: 175px;
+}
+
+.content {
+    float: left;
+    width: 650px;
+    padding-right: 16px;
+    padding-left: 30px;
+    padding-top: 30px;
+    text-align: center;
+    background-color: #DFE6EC;
+    min-height: 418px;
+}
+
+.breed-descript {
+    float: left;
+    width: 650px;
+    padding-right: 16px;
+    text-align: left;
+    background-color: #DFE6EC;
+    min-height: 418px;
+}
+
+.footer {
+    clear: both;
+    padding-top: 70px;
+    text-align: center;
+    width: 630px;
+    margin-left: 200px;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.dog-name.full {
+    text-decoration: underline;
+}
+
+.group-name.full {
+    text-decoration: underline;
+    font-size: 18px;
+}
+
+.puppy-name {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.puppy-sex {
+    font-size: 20px;
+}
+
+.puppy-status {
+    font-size: 20px;
+    color: red;
+}
+
+.puppy-picture{
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.dog-name {
+    font-size: 24px;
+}
+
+.show-results td  {
+    text-align: left;
+    padding-right: 15px;
+}
+
+
+.pictures {
+    margin-top: 40px;
+}
+
+h1.separator {
+    font-size: 14px;
+    display: block;
+    line-height: 14px;
+    padding: 4px 0 4px 10px;
+    background-color: rgb(115, 143, 168);
+    text-align: left;
+    color: white;
+
+}
+div.content-block {
+    margin-bottom: 40px;
+}
+.more-link {
+    display: box;
+    padding: 20px;
+    float: right;
+}
+
+.banners {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.banner-picture {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.html-code {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+
+.frend_links {
+    font-size: 18px;
+    color: red;
+    font-style: italic;
+}
+
+.kontact {
+    font-size: 26px;
+    font-weight: bold;
+    text-decoration: underline;
+
+}
+.kontact_owner {
+    font-size: 20px;
+}
+
+.kontact_info {
+    font-size: 18px;
+}
+
+
+.nopupies {
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.nopupies-contact {
+    text-align: center;
+    font-size: 20px;
+}
+
+.pedigree table td a {
+    text-decoration: none;
+    color: inherit;
+}
+.pedigree table {
+    margin-bottom: 50px;
+}
+.pedigree table td {
+    border: 1px solid slategray;
+    font-size: 75%;
+}
+
+ul.hr {
+    margin: 0; /* Обнуляем значение отступов */
+    padding: 1px; /* Значение полей */
+    color: white;
+}
+
+ul.hr li {
+    display: inline; /* Отображать как строчный элемент */
+    margin-right: 1px; /* Отступ слева */
+    border: 1px solid #000; /* Рамка вокруг текста */
+    padding: 1px; /* Поля вокруг текста */
+}
+
+ul.hr a {
+    text-decoration: none;
+    color: white;
+}
+
+ul.hr a:hover {
+    color: black
+}

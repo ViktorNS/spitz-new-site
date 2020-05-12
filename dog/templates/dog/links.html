@@ -1,0 +1,26 @@
+{% extends 'dog/index.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+
+    <div class="banners">Banner for my site</div>
+
+    <div class="banner-picture"><img src="{% static "banner2.gif" %}"/></div>
+
+    <div class="html-code">Html code:</div>
+
+    <div>{{ html_text.html_text }}</div>
+
+    <hr width = "80%">
+
+    <div class="frend_links">Here are some links of our friends!</div>
+    <br>
+
+    {% for banner in banners.all %}
+        <div>{{ banner.banner|safe }}</div>
+    {% endfor %}
+    <br>
+
+{% endblock content %}
+
+

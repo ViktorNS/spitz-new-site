@@ -1,0 +1,57 @@
+{% extends 'dog/index.html' %}
+{% load  thumbnail %}
+
+{% block content %}
+
+    <div align="left"><span class="dog-name">"{{ dog.home_name }}"</span> - <span class="dog-sex">({{ dog.dog_sex }})</span></div>
+    <div style="text-align:center"><span class="dog-name full">{{ dog.full_name }}</span></div>
+    <div style="text-align:center">
+    <div><span style="border-collapse:collapse"><font size="3">German Miniature Spitz (Kleinspitz)</font></span></div>
+
+    <div><font size="3">Date of Birth: {{ dog.date_of_birth|date:"SHORT_DATE_FORMAT" }} </font></div></div>
+
+    <p align="center"><a href="{% url 'dog.pedigree' name=dog.home_name %}"=><h3>Pedigree</h3></a></p>
+
+    <br>
+    {% thumbnail dog.foto 300x200 upscale as thumb %}
+    <img src="{{ thumb.url }}"/>
+
+    {% if dog.show_results.count > 0 %}
+    <p align="center">Show Results:</p>
+
+
+    <table class="show-results">
+
+        {% for result in dog.show_results.all %}
+        <tr>
+            <td>{{ result.show_date|date:"d.m.Y" }}</td>
+            <td>{{ result.show_id }}</td>
+            <td>{{ result.show_locale }}</td>
+            <td>Judge: {{ result.show_judge }}</td>
+            <td>{{ result.show_result }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+    {% endif %}
+
+
+    <div class="pictures">
+
+        {% for dog_picture in dog.dog_pictures.all %}
+            {% thumbnail dog_picture.picture 780x520 upscale as thumb_big %}
+                {% thumbnail dog_picture.picture 300x200 upscale as thumb %}
+                    <a href="{{ thumb_big.url }}" target="_blank"><img src="{{ thumb.url }}"></a>
+
+        {% endfor %}
+
+    </div>
+    <br>
+
+{% endblock %}
+
+
+
+
+
+

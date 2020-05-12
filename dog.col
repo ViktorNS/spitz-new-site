@@ -1,0 +1,165 @@
+@suit("Spitz.ee admin")
+@langs(en, ru, et)
+
+[index]
+dog_list:= Dog.objects.filter(our_dog=True)
+
+[index-> home: /]
+content:= Content.objects.all()[0]
+news_last_article:= New.objects.all().order_by('-date_created')[0]
+news_count:= New.objects.count()
+
+[index-> our_dogs: /dogs/<name>]
+dog:= Dog.objects.get(home_name=url.name)
+
+[index-> pedigree: /dogs/<name>/pedigree/]
+dog:= Dog.objects.get(home_name=url.name)
+
+[index-> breed_description: /breed_description/]
+breed_descript:= BreedDescription.objects.all()[0]
+
+[index-> photo_gallery: /photo_gallery/]
+foto_gallerys:= PhotoGallery.objects.all()
+
+[index-> puppies: /puppies/]
+contact:= Contact.objects.get()
+puppy_groups:= PuppieParent.objects.all().order_by('-date_of_birth')
+
+
+[index-> contact: /contact/]
+contact:= Contact.objects.get()
+
+[index-> links: /links/]
+html_text:= MyBanner.objects.get()
+banners:= Link.objects.all()
+
+[index-> news: /news/]
+news:= New.objects.all().order_by('-date_created')
+
+
+
+
+#dog
+--------
+=home_name
+full_name
+dog_sex
+date_of_birth: date
+pedigree: html
+foto: image {upload_to='image_upload/dog_foto', null=True, blank=True}
+our_dog: bool(true)
+
+@admin
+
+#dog->boy
+----------
+@admin(
+    inline: show_results()
+    inline: dog_pictures()
+)
+
+#dog->girl
+----------
+@admin(
+    inline: show_results()
+    inline: dog_pictures()
+)
+
+#show_result
+-------------
+dog: one(#dog -> show_results)
+show_date: date
+show_id
+show_locale
+show_judge
+show_result
+
+#dog_picture
+------------
+dog: one(#dog -> dog_pictures)
+picture: image {upload_to='image_upload/dog_picture', null=True, blank=True}
+
+#puppie_parent
+-------------
+="Щенки {me.dad} и {me.mom}, {me.date_of_birth:%d.%m.%Y}"
+dad: one(#boy)
+mom: one(#girl)
+date_of_birth: date
+
+@admin
+
+#puppy
+-------
+parents: one(#puppie_parent -> puppies)
+=name
+p_sex: str(?, choices=Boy, Girl)
+$status: str(?, choices=Available, Reserved, Sold)
+
+
+@admin(
+    inline: puppy_pictures()
+)
+
+#puppy_picture
+--------------
+puppy: one(#puppy -> puppy_pictures)
+picture: image {upload_to='image_upload/puppies_foto', null=True, blank=True}
+
+#content
+--------
+=title
+$home_text: html
+
+@admin
+
+#breed_description
+------------------
+="Breed Description"
+$br_descript: html
+
+@admin
+
+#new
+-------
+=$title
+date_created: date
+$news_text: html
+
+@admin
+
+#photo_gallery
+--------------
+gallery: image {upload_to='image_upload/gallery_foto', null=True, blank=True}
+
+@admin
+
+#contact
+--------
+=kennel
+owner1
+owner2
+adress
+country
+phone
+e_mail
+
+@admin
+
+#link
+------
+=name
+banner: text
+
+@admin
+
+#my_banner
+----------
+=name
+html_text: text
+
+@admin
+
+
+
+
+

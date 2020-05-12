@@ -1,0 +1,20 @@
+{% extends 'dog/index.html' %}
+{% load thumbnail %}
+
+{% block content %}
+
+    <div class="pictures">
+
+        {% for g_foto in foto_gallerys.all %}
+            {% thumbnail g_foto.gallery 780x520 upscale as thumb_big %}
+                {% thumbnail g_foto.gallery 300x200 upscale as thumb %}
+                    <a href="{{ thumb_big.url }}" target="_blank"><img src="{{ thumb.url }}"></a>
+
+        {% endfor %}
+
+    </div>
+
+{% endblock content %}
+
+
+

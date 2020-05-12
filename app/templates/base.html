@@ -1,0 +1,72 @@
+{% load i18n %}
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kennel Fluffy Wonder</title>
+    <link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
+
+</head>
+<body bgcolor="#6E8395">
+
+    <div class="logo" align="center" style="background: url({% static "logo2.png" %}) no-repeat;">
+
+            <span>
+
+                <ul class="hr">
+                    <li><a href="/ru/">RUS</a></li>
+                    <li><a href="/et/">EST</a></li>
+                    <li><a href="/en/">ENG</a></li>
+                </ul>
+
+            </span>
+    </div>
+
+
+    <div class="main">
+
+
+        <div class="left-sidebar">
+
+            <h3><a href="{% url 'dog.home' %}">{% trans "Home" %}</a></h3>
+            <ul>
+                <li><a href="{% url 'dog.breed_description' %}">{% trans "Breed Description" %}</a></li>
+                <li><a href="{% url 'dog.news' %}">{% trans "News" %}</a></li>
+            </ul>
+
+            <span style="color:#ffffff"><h3>{% trans "Our Dogs" %}</h3></span>
+
+            {% block dogs %} {% endblock dogs %}
+
+            <h3><a href="{% url 'dog.photo_gallery' %}">{% trans "Photo Gallery" %}</a></h3>
+            <h3><a href="{% url 'dog.puppies' %}">{% trans "Puppies" %}</a></h3>
+            <h3><a href="{% url 'dog.contact' %}">{% trans "Contact" %}</a></h3>
+            <h3><a href="{% url 'dog.links' %}">{% trans "Links" %}</a></h3>
+
+            <br>
+            <hr align="left" width = "165px">
+
+            <div style="text-align:left"><a href="http://www.facebook.com/profile.php?id=1156062202"
+                target="_blank" title="Viktor Rudakov"><img src="https://static.xx.fbcdn.net/rsrc.php/v3/yZ/r/tTklKS6ed2y.png"
+                style="border:0px none" width="32px"></a><br>
+            </div>
+
+        </div>
+
+        <div class="content">
+
+        {% block content %}{% endblock %}
+
+         </div>
+
+        <div class="footer">
+            Copyright Kennel Fluffy Wonder &reg; 2020. All rights reserved.
+        </div>
+
+    </div>
+
+
+</body>
+</html>

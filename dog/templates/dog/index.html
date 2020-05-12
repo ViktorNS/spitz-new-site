@@ -1,0 +1,14 @@
+{% extends 'dog/_base.html' %}
+
+{% block dogs %}
+    <ul>
+        {% for dog in dog_list %}
+            <li><a href="{% url 'dog.our_dogs' name=dog.home_name %}">
+                <div style="text-transform:uppercase">"{{ dog.home_name }}"</div></a></li>
+        {% endfor %}
+    </ul>
+
+{% endblock dogs %}
+
+
+

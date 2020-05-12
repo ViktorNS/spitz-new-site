@@ -1,0 +1,9 @@
+# generated: a5764fac29bbfe965f70e18ebd9ff879
+
+Pillow
+django-ckeditor
+django-modeltranslation==0.13-beta1
+django-polymorphic
+django-suit
+django>2
+wheel

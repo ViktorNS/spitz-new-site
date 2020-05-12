@@ -1,0 +1,20 @@
+{% extends 'dog/index.html' %}
+
+{% block content %}
+<div align="left"><span class="dog-name">"{{ dog.home_name }}"</span> - <span class="dog-sex">({{ dog.dog_sex }})</span></div>
+<div style="text-align:center"><span class="dog-name full">{{ dog.full_name }}</span></div>
+<div style="text-align:center">
+    <div><span style="border-collapse:collapse"><font size="3">German Miniature Spitz (Kleinspitz)</font></span></div>
+
+    <div><font size="3">Date of Birth: {{ dog.date_of_birth|date:"SHORT_DATE_FORMAT" }} </font></div></div>
+
+
+<p align="center"><h3>Pedigree</h3></p>
+
+<div style="width: 650px;" class="pedigree">
+    {{ dog.pedigree|safe }}
+</div>
+{% endblock content %}
+
+
+
